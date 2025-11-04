@@ -49,3 +49,307 @@ ol {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #D9D9D9;
 }
+
+
+.page {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0; /*отступы*/
+}
+
+.content {
+  display: grid; /*в строку*/
+  inline-size: 1100px; 
+  block-size: 574px; 
+  column-gap: 30px; 
+  grid-template-columns: 711px 399px; /* 2 колонки (видео - 711px) (карточки - 399px) */
+  grid-template-rows: 1fr;
+  align-items: end; 
+}
+
+.search-form {
+  display: flex;
+  /* поле Город, чекбоксы, кнопка Найти */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start; 
+  column-gap: 20px;
+}
+
+.content__list-container {
+  block-size: 298px;
+  overflow-y: auto; /* if >298 -> Добавляем вертикальный скролл */
+}
+
+.content__details {
+  display: flex;
+  flex-direction: column; 
+  row-gap: 26px;
+}
+
+
+/* 2 - размеры */
+
+.result__video-container {
+  block-size: 386px; 
+  inline-size: 711px; 
+  margin-block-end: 16px;
+  position: relative; /* (Шаг 8) */
+}
+
+.result__video {
+  block-size: 100%; 
+  inline-size: 100%; 
+  object-fit: cover; /* обрезать лишнее */
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* м/ду карточками */
+}
+
+.content__video-card {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  block-size: 103px; 
+}
+
+.content__video-card-thumbnail {
+  block-size: 100%;
+  inline-size: 194px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content__video-card-description-container {
+  inline-size: 194px;
+  flex-shrink: 0;
+  padding: 0 20px 18px 0;
+}
+
+/* 3: Стили текстов */
+
+.title {
+  color: #FFF; 
+  font-family: Oswald, sans-serif; 
+  font-size: 75px; 
+  line-height: 94%;
+  text-transform: uppercase;
+}
+
+/*ПО- */
+.content__accent {
+  color: #545050;
+}
+
+.content__card-link {
+  text-decoration: none;
+  color: #FFF;
+  display: block;
+}
+
+/* заголовка карточки  */
+.content__video-card-title {
+  font-family: Oswald, sans-serif;
+  font-size: 30px; 
+  font-weight: 700; 
+  line-height: 100%;
+  text-transform: uppercase;
+  margin-block-end: 6px; 
+  overflow: hidden; /* ... если место закончилос */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* описания карточки */
+.content__video-card-description {
+  font-size: 18px; 
+  line-height: 16.2px; 
+  -webkit-box-orient: vertical;
+}
+
+/* Стили заголовков полей ввода (.search-form__fieldset-title, "ГОРОД", "ВРЕМЯ СУТОК") */
+.search-form__fieldset-title {
+  font-family: Oswald, sans-serif; 
+  font-size: 18px; 
+  line-height: 20px; 
+  font-weight: 400; /* Полужирный */
+  text-transform: uppercase;
+  margin-block-end: 10px;
+}
+
+
+
+
+.visually-hidden { /*так в курсе было написано эмм*/
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.search-form__fieldset {
+  border: none; 
+  padding: 0;
+}
+
+.search-form__textfield {
+  background-color: transparent; 
+  color: #FFF; 
+  border: none;
+  border-block-start: 1px solid #FFF; /* верхняя полоска */
+  border-block-end: 1px solid #FFF; 
+  padding: 0;
+  appearance: none; 
+  inline-size: 225px; 
+}
+
+.search-form__textfield::placeholder {
+  color: #FFF;
+  opacity: 0.7; 
+}
+
+.search-form__label {
+  display: flex;
+  width: fit-content; 
+  color: #FFF; 
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  flex-direction: row; /* в строку */
+  column-gap: 15px; /* м/ду чекбоксами */
+}
+
+/* квадрат */
+.search-form__pseudo-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 19px; 
+  block-size: 19px; 
+  border: 1px solid #FFF; 
+  margin-inline-end: 8px; 
+  flex-shrink: 0;
+}
+
+/* квадрат для чекбоксов внутри */
+.search-form__pseudo-checkbox::after {
+  content: "";
+  inline-size: 15px; 
+  block-size: 15px; 
+  background-color: #FFF; 
+  opacity: 0; 
+  transition: opacity 0.1s ease;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  opacity: 1; 
+}
+
+/* чекбоксы нажимать */
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline;
+}
+
+.search-form__checkbox:focus {
+  outline: none;
+}
+
+.search-form__label:has(.search-form__checkbox:focus-visible) {
+  outline: 1px solid #FFF;
+  outline-offset: 1px;
+}
+
+.button { /*показать еще*/
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #FFF;
+  background-color: transparent;
+  border: 1px solid #FFF; /*рамка */
+  padding: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.search-form__submit-button { /*найти*/
+  block-size: 34px;
+  inline-size: 194px;
+  align-self: flex-end; 
+  margin-inline-start: auto; 
+}
+
+.more-button {
+  inline-size: 100%;
+  block-size: 34px;
+  font-weight: 400; 
+  margin-block-start: 30px; 
+}
+
+/* когда наводят чтобы цвет меняла*/
+.button:hover {
+  background-color: transparent; 
+  text-decoration: underline;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #FFF;
+  outline-offset: 1px;
+}
+
+/* Нажатия карточки */
+.button:active {
+  background-color: #545050;
+}
+
+/* Наведения к*/
+.content__card-link:hover {
+  border: none;
+}
+
+
+.content__card-link:focus-visible {
+  outline: 1px solid #FFF;
+  outline-offset: -1px; 
+}
+
+/* "Выбранная" карточка */
+.content__card-link_current {
+  background-color: #545050; 
+}
+
+.content__card-link:active {
+  background-color: #545050; 
+}
+
+.search-form__textfield:focus-visible {
+    border: 1px solid #FFF;
+    outline: none; 
+}
+
+.search-form__textfield:active {/*для ввода рамка*/
+  border-block-start: 1px solid transparent; 
+  border-block-end: 1px solid transparent;
+  
+  border-inline-start: 1px solid #FFF; 
+  border-inline-end: 1px solid #FFF;
+}
+
+.content__card-link:hover .content__video-card-title,
+.content__card-link:hover .content__video-card-description {
+  text-decoration: underline;
+}
+
